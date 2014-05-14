@@ -1,31 +1,26 @@
 {
   "variables": {
-    "vm_name": "Cloudspace"
+    "vm_name": "Cloudspace-rails-14.04"
   },
   "builders": [{
-    "type": "virtualbox-iso",
+    "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso",
-    "iso_checksum": "01545fa976c8367b4f0d59169ac4866c",
-    "iso_checksum_type": "md5",
+    "source_path": "virtualbox-ubuntu-14.04/cloudspace-ubuntu-14.04.ovf",
+    "output_directory": "virtualbox-rails-4.1",
     "ssh_username": "cloudspace",
     "ssh_password": "cloudspace",
-    "guest_os_type": "Ubuntu_64",
-    "http_directory": "http",
-    "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
-    "virtualbox_version_file": ".vbox_version",
     "ssh_wait_timeout": "20m",
-    "boot_command": [
-      "<esc><esc><enter><wait>",
-      "/install/vmlinuz noapic ",
-      "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
-      "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-      "hostname={{user `vm_name`}} ",
-      "fb=false debconf/frontend=noninteractive ",
-      "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
-      "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
-      "initrd=/install/initrd.gz -- <enter>"
-    ],
     "shutdown_command": "echo 'cloudspace'|sudo -S shutdown -P now"
+  }],
+  "provisioners": [{
+      "type": "shell",
+      "inline": [
+        "sleep 10",
+        "sudo -S apt-get install ansible -y"
+      ]
+    },
+    {
+    "type": "ansible-local",
+    "playbook_file": "local.yml"
   }]
 }
