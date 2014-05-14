@@ -3,6 +3,7 @@ packer_cache/
 
 # For built boxes
 *.box
+output-virtualbox-iso/*
 
 # OSX
 .DS_Store
