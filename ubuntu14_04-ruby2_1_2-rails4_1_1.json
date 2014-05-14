@@ -27,12 +27,5 @@
       "initrd=/install/initrd.gz -- <enter>"
     ],
     "shutdown_command": "echo 'cloudspace'|sudo -S shutdown -P now"
-  }],
-  "provisioners": [{
-    "type": "shell",
-    "inline": [
-      "sleep 30",
-      "sudo apt-get update"
-    ]
   }]
 }
