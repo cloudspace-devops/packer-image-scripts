@@ -1,0 +1,33 @@
+{
+  "variables": {
+    "aws_access_key": "",
+    "aws_secret_key": ""
+  },
+  "builders": [{
+    "type": "amazon-instance",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "x509_cert_path": "/Users/tsampson/.ssh/x509/cert-cloudspace.pem",
+    "x509_key_path": "/Users/tsampson/.ssh/x509/pk-cloudspace.pem",
+    "account_id": "8848-8209-9534",
+    "region": "us-east-1",
+    "s3_bucket": "packer-amis",
+    "source_ami": "ami-7fe7fe16",
+    "instance_type": "m1.small",
+    "ssh_username": "ubuntu",
+    "ami_name": "ubuntu14_04-ruby2_1_2-rails4_1_1-{{timestamp}}"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sleep 30",
+      "sudo sed -i.dist 's,universe$,universe multiverse,' /etc/apt/sources.list",
+      "sudo apt-get update",
+      "sudo apt-get install -y ec2-api-tools ec2-ami-tools"
+    ]
+  },
+  {
+    "type": "ansible-local",
+    "playbook_file": "local.yml"
+  }]
+}
