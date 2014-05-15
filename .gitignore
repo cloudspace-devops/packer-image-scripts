@@ -3,6 +3,11 @@ packer_cache/
 
 # For built boxes
 *.box
+output-virtualbox-iso/*
+virtualbox-*
 
 # Env variables
 env.json
+
+# OSX
+.DS_Store
