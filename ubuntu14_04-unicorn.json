@@ -1,12 +1,12 @@
 {
   "variables": {
-    "vm_name": "Cloudspace-rails-14.04"
+    "vm_name": "Cloudspace-unicorn"
   },
   "builders": [{
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "source_path": "virtualbox-ubuntu-14.04/cloudspace-ubuntu-14.04.ovf",
-    "output_directory": "virtualbox-rails-4.1",
+    "source_path": "virtualbox-rails-4.1/cloudspace-rails-14.04.ovf",
+    "output_directory": "virtualbox-unicorn",
     "ssh_username": "cloudspace",
     "ssh_password": "cloudspace",
     "ssh_wait_timeout": "20m",
@@ -15,8 +15,7 @@
   "provisioners": [{
       "type": "shell",
       "scripts": [
-        "scripts/base.sh",
-        "scripts/ruby-rails.sh"
+        "scripts/nginx-unicorn.sh"
       ],
       "pause_before": "10s"
     }]
