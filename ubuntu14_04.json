@@ -13,6 +13,7 @@
     "ssh_password": "cloudspace",
     "guest_os_type": "Ubuntu_64",
     "http_directory": "http",
+    "sync_directory": "~/app/,
     "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
     "virtualbox_version_file": ".vbox_version",
     "ssh_wait_timeout": "20m",
