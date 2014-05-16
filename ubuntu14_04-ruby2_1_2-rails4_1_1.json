@@ -14,9 +14,9 @@
   }],
   "provisioners": [{
       "type": "shell",
-      "inline": [
-        "sleep 10",
-        "sudo -S apt-get install ansible -y"
+      "scripts": [
+        "scripts/base.sh",
+        "scripts/ansible.sh"
       ]
     },
     {
