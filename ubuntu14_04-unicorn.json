@@ -17,6 +17,6 @@
       "scripts": [
         "scripts/nginx-unicorn.sh"
       ],
-      "pause_before": "10s"
+      "pause_before": "4s"
     }]
 }
