@@ -15,7 +15,7 @@
     "http_directory": "http",
     "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
     "virtualbox_version_file": ".vbox_version",
-    "vboxmanage": [
+    "vboxmanage_post": [
       [
         "modifyvm",
         "{{.Name}}",
@@ -27,6 +27,12 @@
         "{{.Name}}",
         "--cpus",
         "2"
+      ],
+      [
+        "modifyvm", 
+        "{{.Name}}", 
+        "--nic1", 
+        "bridged"
       ]
     ],
     "ssh_wait_timeout": "45m",
