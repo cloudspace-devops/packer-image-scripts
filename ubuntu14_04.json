@@ -27,12 +27,6 @@
         "{{.Name}}",
         "--cpus",
         "2"
-      ],
-      [
-        "modifyvm", 
-        "{{.Name}}", 
-        "--nic1", 
-        "bridged"
       ]
     ],
     "ssh_wait_timeout": "45m",
