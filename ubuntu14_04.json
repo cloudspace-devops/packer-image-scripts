@@ -15,7 +15,21 @@
     "http_directory": "http",
     "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
     "virtualbox_version_file": ".vbox_version",
-    "ssh_wait_timeout": "20m",
+    "vboxmanage": [
+      [
+        "modifyvm",
+        "{{.Name}}",
+        "--memory",
+        "2048"
+      ],
+      [
+        "modifyvm",
+        "{{.Name}}",
+        "--cpus",
+        "2"
+      ]
+    ],
+    "ssh_wait_timeout": "45m",
     "boot_command": [
       "<esc><esc><enter><wait>",
       "/install/vmlinuz noapic ",
@@ -30,8 +44,11 @@
     "shutdown_command": "echo 'cloudspace'|sudo -S shutdown -P now"
   }],
   "provisioners": [{
-      "type": "shell",
-      "script": "scripts/sudoers-nopasswd.sh",
-      "pause_before": "10s"
+    "type": "shell",
+    "scripts": [
+      "scripts/sudoers-nopasswd.sh",
+      "scripts/base.sh"
+    ],
+    "pause_before": "4s"
   }]
 }

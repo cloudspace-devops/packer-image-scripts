@@ -13,11 +13,8 @@
     "shutdown_command": "echo 'cloudspace'|sudo -S shutdown -P now"
   }],
   "provisioners": [{
-      "type": "shell",
-      "scripts": [
-        "scripts/base.sh",
-        "scripts/ruby-rails.sh"
-      ],
-      "pause_before": "10s"
-    }]
+    "type": "shell",
+    "script": "scripts/ruby-rails.sh",
+    "pause_before": "4s"
+  }]
 }
