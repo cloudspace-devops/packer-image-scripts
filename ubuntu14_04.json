@@ -34,7 +34,7 @@
         "--nic1", 
         "bridged"
       ],
-      ["modifyvm", "{{.Name}}", "--bridgeadapter1", "eth0"]
+      ["modifyvm", "{{.Name}}", "--nic1", "bridged", "--bridgeadapter1", "eth0"]
     ],
     "ssh_wait_timeout": "45m",
     "boot_command": [
