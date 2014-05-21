@@ -54,7 +54,8 @@
     "type": "shell",
     "scripts": [
       "scripts/sudoers-nopasswd.sh",
-      "scripts/base.sh"
+      "scripts/base.sh",
+      "scripts/install-virtualbox-guest-additions.sh"
     ],
     "pause_before": "4s"
   }]
