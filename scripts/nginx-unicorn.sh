@@ -8,8 +8,8 @@ sudo groupadd web
 sudo usermod -a -G web nginx
 sudo usermod -a -G web cloudspace
 # Copy over unicorn nginx conf file
-sudo mkdir -p /srv/www
-sudo chgrp web /srv/www
+# sudo mkdir -p /srv/www
+# sudo chgrp web /srv/www
 
 
 #Install Unicorn

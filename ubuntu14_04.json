@@ -27,6 +27,14 @@
         "{{.Name}}",
         "--cpus",
         "2"
+      ],
+      [
+        "modifyvm", 
+        "{{.Name}}", 
+        "--nic1", 
+        "bridged", 
+        "--bridgeadapter1", 
+        "eth0"
       ]
     ],
     "ssh_wait_timeout": "45m",
@@ -41,7 +49,7 @@
       "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
       "initrd=/install/initrd.gz -- <enter>"
     ],
-    "shutdown_command": "echo 'cloudspace'|sudo -S shutdown -P now"
+    "shutdown_command": "sudo shutdown -P now"
   }],
   "provisioners": [{
     "type": "shell",
