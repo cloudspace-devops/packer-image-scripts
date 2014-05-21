@@ -13,4 +13,5 @@ sudo chgrp web /srv/www
 
 
 #Install Unicorn
+rbenv rehash
 gem install unicorn
