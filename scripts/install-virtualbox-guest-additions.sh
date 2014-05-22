@@ -3,7 +3,7 @@
 # Mount the disk image
 sudo cd /tmp
 sudo mkdir /tmp/isomount
-sudo mount -t iso9660 -o loop /home/cloudspace/VBoxGuestAdditions.iso /tmp/isomount
+sudo mount -t iso9660 -o loop /home/cloudspace/VBoxGuestAdditions_{{.Version}}.iso /tmp/isomount
 
 # Install the drivers
 sudo /tmp/isomount/VBoxLinuxAdditions.run
