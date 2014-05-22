@@ -5,6 +5,7 @@ packer_cache/
 *.box
 output-virtualbox-iso/*
 virtualbox-*
+trash*
 
 # Env variables
 env.json
