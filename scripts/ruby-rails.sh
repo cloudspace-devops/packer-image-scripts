@@ -28,9 +28,4 @@ rbenv install 2.1.2
 rbenv global 2.1.2
 ruby -v
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
-
-# Install Rails
-sudo apt-get install -y nodejs
-gem install rails
 rbenv rehash
-rails -v
