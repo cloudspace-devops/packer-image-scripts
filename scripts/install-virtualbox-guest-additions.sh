@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Mount the disk image
-sudo cd /tmp
+cd /tmp
 sudo mkdir /tmp/isomount
 sudo mount -t iso9660 -o loop /home/vagrant/VBoxGuestAdditions_{{.Version}}.iso /tmp/isomount
 
