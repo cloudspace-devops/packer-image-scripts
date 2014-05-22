@@ -5,7 +5,10 @@ packer_cache/
 *.box
 output-virtualbox-iso/*
 virtualbox-*
-builds/
+builds/client
+builds/node
+builds/ubuntu
+builds/tmp
 trash*
 
 # Env variables
