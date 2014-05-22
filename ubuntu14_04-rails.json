@@ -10,7 +10,7 @@
     "ssh_username": "cloudspace",
     "ssh_password": "cloudspace",
     "ssh_wait_timeout": "20m",
-    "shutdown_command": "echo 'cloudspace'|sudo -S shutdown -P now"
+    "shutdown_command": "sudo shutdown -P now"
   }],
   "provisioners": [{
     "type": "shell",
