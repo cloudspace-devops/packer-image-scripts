@@ -1,0 +1,26 @@
+{
+  "variables": {
+    "vm_name": "vagrant"
+  },
+  "builders": [{
+    "type": "virtualbox-ovf",
+    "vm_name": "{{user `vm_name`}}",
+    "source_path": "builds/ubuntu/ubuntu-latest.ovf",
+    "output_directory": "builds/tmp",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_wait_timeout": "20m",
+    "shutdown_command": "sudo shutdown -P now"
+  }],
+  "provisioners": [{
+    "type": "shell",
+    "scripts": [
+      "scripts/add-vagrant-key.sh"
+    ],
+    "pause_before": "4s"
+  }],
+  "post-processors": [{
+    "output": "builds/vagrant/vagrant.box",
+    "type": "vagrant"
+  }]
+}

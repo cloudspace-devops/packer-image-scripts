@@ -1,18 +1,17 @@
 {
   "variables": {
-    "vm_name": "Cloudspace-ubuntu-14.04"
+    "vm_name": "ubuntu-latest"
   },
   "builders": [{
     "type": "virtualbox-iso",
     "vm_name": "{{user `vm_name`}}",
-    "output_directory": "virtualbox-ubuntu-14.04",
+    "output_directory": "builds/ubuntu",
     "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso",
     "iso_checksum": "01545fa976c8367b4f0d59169ac4866c",
     "iso_checksum_type": "md5",
-    "ssh_username": "cloudspace",
-    "ssh_password": "cloudspace",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
     "guest_os_type": "Ubuntu_64",
-    "http_directory": "http",
     "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
     "virtualbox_version_file": ".vbox_version",
     "vboxmanage_post": [
@@ -27,16 +26,9 @@
         "{{.Name}}",
         "--cpus",
         "2"
-      ],
-      [
-        "modifyvm", 
-        "{{.Name}}", 
-        "--nic1", 
-        "bridged", 
-        "--bridgeadapter1", 
-        "eth0"
       ]
     ],
+    "http_directory": "http",
     "ssh_wait_timeout": "45m",
     "boot_command": [
       "<esc><esc><enter><wait>",
@@ -55,8 +47,7 @@
     "type": "shell",
     "scripts": [
       "scripts/sudoers-nopasswd.sh",
-      "scripts/base.sh",
-      "scripts/install-virtualbox-guest-additions.sh"
+      "scripts/base.sh"
     ],
     "pause_before": "4s"
   }]

@@ -1,14 +1,14 @@
 {
   "variables": {
-    "vm_name": "Cloudspace-unicorn"
+    "vm_name": "unicorn-latest"
   },
   "builders": [{
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "source_path": "virtualbox-rails-4.1/cloudspace-rails-14.04.ovf",
-    "output_directory": "virtualbox-unicorn",
-    "ssh_username": "cloudspace",
-    "ssh_password": "cloudspace",
+    "source_path": "builds/rails/rails-latest.ovf",
+    "output_directory": "builds/unicorn",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
     "ssh_wait_timeout": "20m",
     "shutdown_command": "sudo shutdown -P now"
   }],

@@ -1,14 +1,14 @@
 {
   "variables": {
-    "vm_name": "Cloudspace-node-14.04"
+    "vm_name": "node-latest"
   },
   "builders": [{
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "source_path": "virtualbox-ubuntu-14.04/cloudspace-ubuntu-14.04.ovf",
-    "output_directory": "virtualbox-node_0.10.28",
-    "ssh_username": "cloudspace",
-    "ssh_password": "cloudspace",
+    "source_path": "builds/ubuntu/ubuntu-latest.ovf",
+    "output_directory": "builds/node",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
     "ssh_wait_timeout": "20m",
     "shutdown_command": "sudo shutdown -P now"
   }],

@@ -1,14 +1,18 @@
-#!/bin/bash -eux
+#!/bin/bash
 
 # node
 cd /usr/local/src/
-wget http://nodejs.org/dist/v0.10.28/node-v0.10.28-linux-x64.tar.gz
-tar -xzvf node-v0.10.28-linux-x64.tar.gz
+sudo wget http://nodejs.org/dist/v0.10.28/node-v0.10.28-linux-x64.tar.gz
+sudo tar -xzf node-v0.10.28-linux-x64.tar.gz
 
 # this gets the source for npm on some packages
-wget http://nodejs.org/dist/v0.10.28/node-v0.10.28.tar.gz
-tar -xzvf node-v0.10.28.tar.gz
+sudo wget http://nodejs.org/dist/v0.10.28/node-v0.10.28.tar.gz
+sudo tar -xzf node-v0.10.28.tar.gz
 
-# adds node / npm to the path
-sudo echo "PATH=\"/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/local/src/node-v0.10.28-linux-x64/bin\"" > /etc/environment
+# link node and npm to /usr/bin
+sudo ln -s /usr/local/src/node-v0.10.28-linux-x64/bin/node /usr/bin/
+sudo ln -s /usr/local/src/node-v0.10.28-linux-x64/bin/npm /usr/bin/
 
+# install yeoman, grunt and bower
+# sudo npm cache clean
+# sudo npm install -g yo
