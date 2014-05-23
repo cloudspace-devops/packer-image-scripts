@@ -9,6 +9,8 @@ builds/client
 builds/node
 builds/ubuntu
 builds/tmp
+builds/.vagrant
+builds/ruby
 trash*
 
 # Env variables

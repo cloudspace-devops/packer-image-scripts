@@ -14,7 +14,12 @@
   }],
   "provisioners": [{
     "type": "shell",
-    "script": "scripts/ruby.sh",
+    "scripts": [
+      "scripts/node.sh",
+      "scripts/ruby.sh",
+      "scripts/imagemagick.sh",
+      "scripts/nginx-unicorn.sh"
+    ],
     "pause_before": "4s"
   }]
 }

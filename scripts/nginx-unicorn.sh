@@ -13,5 +13,5 @@ sudo usermod -a -G web vagrant
 
 
 #Install Unicorn
-rbenv rehash
-gem install unicorn
+#rbenv rehash
+#gem install unicorn
