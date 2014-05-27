@@ -11,6 +11,7 @@ builds/ubuntu
 builds/tmp
 builds/.vagrant
 builds/ruby
+builds/ruby-mysql
 trash*
 
 # Env variables

@@ -14,7 +14,11 @@
   }],
   "provisioners": [{
     "type": "shell",
-    "script": "scripts/node.sh",
+    "scripts": [
+      "scripts/node.sh",
+      "scripts/yeoman.sh",
+      "scripts/memcached.sh"
+    ],
     "pause_before": "4s"
   }]
 }

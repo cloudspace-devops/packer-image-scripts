@@ -22,12 +22,20 @@ echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 
 # Install and set default ruby version
-rbenv install 1.9.3-p547
-rbenv install 2.0.0-p481
+#rbenv install 1.9.3-p547
+#rbenv install 2.0.0-p481
 #rbenv install 2.1.0
 #rbenv install 2.1.1
 rbenv install 2.1.2
 rbenv global 2.1.2
 ruby -v
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc
+
+# Install rbenv-bundler to make rbenv shims "bundler aware"
+git clone git://github.com/carsomyr/rbenv-bundler.git ~/.rbenv/plugins/bundler
+
+# Install bundler
+gem install bundler
+mkdir -p ~/.bundle
+echo -e "---\nBUNDLE_PATH: ~/vendor/bundle\nBUNDLE_DISABLE_SHARED_GEMS: \"1\"" >> ~/.bundle/config
 rbenv rehash
