@@ -16,7 +16,7 @@ sudo usermod -a -G web vagrant
 gem install unicorn
 mkdir -p /etc/unicorn
 mkdir -p /var/log/unicorn
-cat <<'EOF' > /root/unicorn_app.rb
+cat <<'EOF' > /etc/unicorn/app.rb
 rails_env = ENV['RAILS_ENV'] || 'production'
 worker_processes 1
 preload_app true
