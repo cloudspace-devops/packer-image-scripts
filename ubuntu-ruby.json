@@ -18,8 +18,7 @@
       "scripts/node.sh",
       "scripts/ruby.sh",
       "scripts/imagemagick.sh",
-      "scripts/memcached.sh",
-      "scripts/nginx-unicorn.sh"
+      "scripts/memcached.sh"
     ],
     "pause_before": "4s"
   }]
