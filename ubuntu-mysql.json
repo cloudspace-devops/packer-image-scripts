@@ -5,7 +5,7 @@
   "builders": [{
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "source_path": "builds/ubuntu-latest.ovf",
+    "source_path": "builds/ubuntu/ubuntu-latest.ovf",
     "output_directory": "builds/mysql",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",

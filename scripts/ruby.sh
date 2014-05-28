@@ -10,9 +10,12 @@ git config --global user.email "info@cloudspace.com"
 # Install rbenv
 git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
 
+# Manually running export and eval here since .bashrc won't run non-interactive
+export PATH="./bin:$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 # Add rbenv paths and eval to .bashrc
 echo -e 'export PATH="./bin:$HOME/.rbenv/bin:$PATH"\neval "$(rbenv init -)"' >> ~/.bashrc
-source ~/.bashrc
 
 # Install ruby-build, gem rehash, rbenv update rbenv plugns
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
@@ -20,10 +23,11 @@ git clone git://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbe
 git clone git://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update
 
 # Install and set default ruby version
-#rbenv install 1.9.3-p547
-#rbenv install 2.0.0-p481
-#rbenv install 2.1.0
-#rbenv install 2.1.1
+cd ~/.rbenv
+#rbenv install --keep 1.9.3-p547
+#rbenv install --keep 2.0.0-p481
+#rbenv install --keep 2.1.0
+#rbenv install --keep 2.1.1
 rbenv install --keep 2.1.2
 rbenv global 2.1.2
 ruby -v
