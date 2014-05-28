@@ -9,7 +9,7 @@ git config --global user.email "info@cloudspace.com"
 
 # Install rbenv
 git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
-export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 eval "$(rbenv init -)"
 
 # Install ruby-build
@@ -17,7 +17,8 @@ git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-buil
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 # Add rbenv and ruby-build paths and eval to .bashrc
-echo 'export PATH="$HOME/.rbenv/bin:$PATH"' >> ~/.bashrc
+echo 'export RBENV_ROOT="$HOME/.rbenv"'
+echo 'export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"' >> ~/.bashrc
 echo 'eval "$(rbenv init -)"' >> ~/.bashrc
 echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 
@@ -39,3 +40,55 @@ gem install bundler
 mkdir -p ~/.bundle
 echo -e "---\nBUNDLE_PATH: ~/vendor/bundle\nBUNDLE_DISABLE_SHARED_GEMS: \"1\"" >> ~/.bundle/config
 rbenv rehash
+
+# Install common gems
+gem install rails
+gem install mysql2
+gem install pg
+gem install nokogiri
+gem install sass-rails
+gem install uglifier
+gem install coffee-rails
+gem install execjs
+gem install jquery-rails
+gem install turbolinks
+gem install jbuilder
+gem install sdoc
+gem install bcrypt
+gem install unicorn
+gem install capistrano-rails
+gem install thread_safe
+gem install aws-sdk
+gem install therubyracer
+gem install devise
+gem install cancan
+gem install rolify
+gem install haml
+gem install slim
+gem install paperclip
+gem install sshkey
+gem install twitter-bootstrap-rails
+gem install less-rails
+gem install omniauth-github
+gem install binding_of_caller
+gem install net-ssh
+gem install rspec
+gem install rspec-rails
+gem install shoulda
+gem install database_cleaner
+gem install factory_girl_rails
+gem install faker
+gem install yard
+gem install yard-activerecord
+gem install redcarpet
+gem install github-markup
+gem install pry-byebug
+gem install pry-rails
+gem install rails_best_practices
+gem install rubocop
+gem install ruby-progressbar
+gem install metric_fu
+gem install guard-bundler
+gem install guard-rails
+gem install guard-rspec
+gem install librarian-chef
