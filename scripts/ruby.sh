@@ -9,18 +9,15 @@ git config --global user.email "info@cloudspace.com"
 
 # Install rbenv
 git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
-export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
-eval "$(rbenv init -)"
 
-# Install ruby-build
+# Add rbenv paths and eval to .bashrc
+echo -e 'export PATH="./bin:$HOME/.rbenv/bin:$PATH"\neval "$(rbenv init -)"' >> ~/.bashrc
+source ~/.bashrc
+
+# Install ruby-build, gem rehash, rbenv update rbenv plugns
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
-
-# Add rbenv and ruby-build paths and eval to .bashrc
-echo 'export RBENV_ROOT="$HOME/.rbenv"'
-echo 'export PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"' >> ~/.bashrc
-echo 'eval "$(rbenv init -)"' >> ~/.bashrc
-echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
+git clone git://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
+git clone git://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update
 
 # Install and set default ruby version
 #rbenv install 1.9.3-p547
@@ -30,16 +27,10 @@ echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 rbenv install --keep 2.1.2
 rbenv global 2.1.2
 ruby -v
-echo "gem: --no-ri --no-rdoc" > ~/.gemrc
-
-# Install rbenv-bundler to make rbenv shims "bundler aware"
-git clone git://github.com/carsomyr/rbenv-bundler.git ~/.rbenv/plugins/bundler
+echo -e "install: --no-ri --no-rdoc\nupdate: --no-ri --no-rdoc" > ~/.gemrc
 
 # Install bundler
 gem install bundler
-mkdir -p ~/.bundle
-echo -e "---\nBUNDLE_PATH: ~/vendor/bundle\nBUNDLE_DISABLE_SHARED_GEMS: \"1\"" >> ~/.bundle/config
-rbenv rehash
 
 # Install common gems
 gem install rails

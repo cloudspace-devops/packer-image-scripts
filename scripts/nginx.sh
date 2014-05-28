@@ -8,11 +8,10 @@ sudo groupadd web
 sudo usermod -a -G web nginx
 sudo usermod -a -G web vagrant
 
-#Install Unicorn
-gem install unicorn
-mkdir -p /etc/unicorn
-mkdir -p /var/log/unicorn
-cat <<'EOF' > /etc/unicorn/app.rb
+# Setup Unicorn Configs
+sudo mkdir -p /etc/unicorn
+sudo mkdir -p /var/log/unicorn
+sudo cat <<'EOF' > /etc/unicorn/app.rb
 rails_env = ENV['RAILS_ENV'] || 'production'
 worker_processes 1
 preload_app true
