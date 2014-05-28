@@ -26,7 +26,7 @@ echo 'export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"' >> ~/.bashrc
 #rbenv install 2.0.0-p481
 #rbenv install 2.1.0
 #rbenv install 2.1.1
-rbenv install 2.1.2
+rbenv install --keep 2.1.2
 rbenv global 2.1.2
 ruby -v
 echo "gem: --no-ri --no-rdoc" > ~/.gemrc

@@ -1,19 +1,6 @@
 # Cache objects
 packer_cache/
 
-# For built boxes
-*.box
-output-virtualbox-iso/*
-virtualbox-*
-builds/client
-builds/node
-builds/ubuntu
-builds/tmp
-builds/.vagrant
-builds/ruby
-builds/ruby-mysql
-trash*
-
 # Env variables
 env.json
 

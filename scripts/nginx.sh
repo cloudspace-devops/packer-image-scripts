@@ -10,8 +10,3 @@ sudo usermod -a -G web vagrant
 # Copy over unicorn nginx conf file
 # sudo mkdir -p /srv/www
 # sudo chgrp web /srv/www
-
-
-#Install Unicorn
-#rbenv rehash
-#gem install unicorn

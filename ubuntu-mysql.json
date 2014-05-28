@@ -1,12 +1,12 @@
 {
   "variables": {
-    "vm_name": "ruby-latest"
+    "vm_name": "mysql-latest"
   },
   "builders": [{
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "source_path": "builds/ubuntu/ubuntu-latest.ovf",
-    "output_directory": "builds/ruby",
+    "source_path": "builds/ubuntu-latest.ovf",
+    "output_directory": "builds/mysql",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "20m",
@@ -15,12 +15,7 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/node.sh",
-      "scripts/ruby.sh",
-      "scripts/gems.sh",
-      "scripts/imagemagick.sh",
-      "scripts/memcached.sh",
-      "scripts/nginx.sh"
+      "scripts/mysql-server.sh"
     ],
     "pause_before": "4s"
   }]

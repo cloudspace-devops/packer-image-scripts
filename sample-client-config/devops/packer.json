@@ -1,11 +1,12 @@
 {
   "variables": {
-    "vm_name": "vagrant"
+    "vm_name": "sitename-web",
+    "base_ovf": "ruby-mysql-latest"
   },
   "builders": [{
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "source_path": "http://devops.cloudspace.com.s3.amazonaws.com/images/node-latest.ovf",
+    "source_path": "http://devops.cloudspace.com/images/{{user `base_ovf`}}.ovf",
     "output_directory": "builds/tmp",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
@@ -15,12 +16,12 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/add-vagrant-key.sh"
+      "packer/add-vagrant-key.sh"
     ],
     "pause_before": "4s"
   }],
   "post-processors": [{
-    "output": "builds/vagrant/vagrant.box",
+    "output": "builds/{{user `vm_name`}}.box",
     "type": "vagrant"
   }]
 }

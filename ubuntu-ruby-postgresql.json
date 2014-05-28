@@ -1,22 +1,22 @@
 {
   "variables": {
-    "vm_name": "unicorn-latest"
+    "vm_name": "ruby-postgresql-latest"
   },
   "builders": [{
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "source_path": "builds/rails/rails-latest.ovf",
-    "output_directory": "builds/unicorn",
+    "source_path": "builds/ruby/ruby-latest.ovf",
+    "output_directory": "builds/ruby-postgresql",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "20m",
     "shutdown_command": "sudo shutdown -P now"
   }],
   "provisioners": [{
-      "type": "shell",
-      "scripts": [
-        "scripts/nginx-unicorn.sh"
-      ],
-      "pause_before": "4s"
-    }]
+    "type": "shell",
+    "scripts": [
+      "scripts/postgresql-server.sh"
+    ],
+    "pause_before": "4s"
+  }]
 }
