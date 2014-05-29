@@ -5,7 +5,7 @@ working_directory "/srv/www/app/current"
 listen "/srv/www/app/unicorn.sock", :backlog => 64
 listen 8080, :tcp_nopush => true
 timeout 30
-pid "/var/run/unicorn.pid"
+pid "/srv/www/app/unicorn.pid"
 stderr_path "/var/log/unicorn/stderr.log"
 stdout_path "/var/log/unicorn/stdout.log"
 preload_app true
@@ -20,7 +20,7 @@ before_exec do |server|
 end
 
 before_fork do |server, worker|
-  old_pid = '/var/run/unicorn.pid.oldbin'
+  old_pid = '/srv/www/app/unicorn.pid.oldbin'
   if File.exists?(old_pid) && server.pid != old_pid
     begin
       Process.kill("QUIT", File.read(old_pid).to_i)
