@@ -16,7 +16,7 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "packer/add-vagrant-key.sh"
+
     ],
     "pause_before": "4s"
   }],

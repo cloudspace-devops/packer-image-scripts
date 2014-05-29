@@ -1,12 +1,14 @@
 {
   "variables": {
-    "vm_name": "ruby-mysql-latest"
+    "vm_name": "ruby-mysql-latest",
+    "directory_name": "ruby-mysql",
+    "base_box": "ruby/ruby-latest.ovf"
   },
   "builders": [{
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "source_path": "builds/ruby/ruby-latest.ovf",
-    "output_directory": "builds/ruby-mysql",
+    "source_path": "builds/{{user `base_box`}}",
+    "output_directory": "builds/{{user `directory_name`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "20m",
@@ -18,5 +20,10 @@
       "scripts/mysql-server.sh"
     ],
     "pause_before": "4s"
+  }],
+  "post-processors": [{
+    "output": "builds/{{user `directory_name`}}/{{user `vm_name`}}.box",
+    "type": "vagrant",
+    "keep_input_artifact": true
   }]
 }

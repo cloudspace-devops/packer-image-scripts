@@ -1,12 +1,14 @@
 {
   "variables": {
-    "vm_name": "ruby-postgresql-latest"
+    "vm_name": "ruby-postgresql-latest",
+    "directory_name": "ruby-postpresql",
+    "base_box": "ruby/ruby-latest.ovf"
   },
   "builders": [{
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "source_path": "builds/ruby/ruby-latest.ovf",
-    "output_directory": "builds/ruby-postgresql",
+    "source_path": "builds/{{user `base_box`}}",
+    "output_directory": "builds/{{user `directory_name`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "20m",
@@ -18,5 +20,10 @@
       "scripts/postgresql-server.sh"
     ],
     "pause_before": "4s"
+  }],
+  "post-processors": [{
+    "output": "builds/{{user `directory_name`}}/{{user `vm_name`}}.box",
+    "type": "vagrant",
+    "keep_input_artifact": true
   }]
 }

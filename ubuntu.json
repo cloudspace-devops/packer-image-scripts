@@ -1,12 +1,14 @@
 {
   "variables": {
-    "vm_name": "ubuntu-latest"
+    "vm_name": "ubuntu-latest",
+    "directory_name": "ubuntu",
+    "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso"
   },
   "builders": [{
     "type": "virtualbox-iso",
     "vm_name": "{{user `vm_name`}}",
-    "output_directory": "builds/ubuntu",
-    "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso",
+    "output_directory": "builds/{{user `directory_name`}}",
+    "iso_url": "{{user `iso_url`}}",
     "iso_checksum": "01545fa976c8367b4f0d59169ac4866c",
     "iso_checksum_type": "md5",
     "ssh_username": "vagrant",
@@ -47,8 +49,15 @@
     "type": "shell",
     "scripts": [
       "scripts/sudoers-nopasswd.sh",
-      "scripts/base.sh"
+      "scripts/base.sh",
+      "scripts/install-virtualbox-guest-additions.sh",
+      "scripts/add-vagrant-key.sh"
     ],
     "pause_before": "4s"
+  }],
+  "post-processors": [{
+    "output": "builds/{{user `directory_name`}}/{{user `vm_name`}}.box",
+    "type": "vagrant",
+    "keep_input_artifact": true
   }]
 }

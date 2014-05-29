@@ -10,12 +10,13 @@ git config --global user.email "info@cloudspace.com"
 # Install rbenv
 git clone git://github.com/sstephenson/rbenv.git ~/.rbenv
 
-# Manually running export and eval here since .bashrc won't run non-interactive
-export PATH="./bin:$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+echo $PATH
 
-# Add rbenv paths and eval to .bashrc
-echo -e 'export PATH="./bin:$HOME/.rbenv/bin:$PATH"\neval "$(rbenv init -)"' >> ~/.bashrc
+# Add rbenv paths and eval to .bashrc and .bash_profile (needed in login/non-login shells)
+echo -e 'export PATH="./bin:$HOME/.rbenv/bin:$PATH"\neval "$(rbenv init -)"' | tee ~/.bash_profile ~/.bashrc
+. ~/.bash_profile
+
+echo $PATH
 
 # Install ruby-build, gem rehash, rbenv update rbenv plugns
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
