@@ -103,7 +103,6 @@ gem install rails
 gem install rails_best_practices
 gem install redcarpet
 gem install rest-client
-gem install rmagick
 gem install rolify
 gem install rspec
 gem install rspec-rails
