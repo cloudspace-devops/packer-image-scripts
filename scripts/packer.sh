@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eux
 
 # Install unzip
 sudo apt-get install -y unzip

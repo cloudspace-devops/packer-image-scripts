@@ -11,6 +11,15 @@ brew update
 # Install wget
 brew install -y wget
 
+# Install git
+brew install git
+echo -n "Enter your full name for git and press [ENTER]: "
+read fullname
+echo -n "Enter your email address for git and press [ENTER]: "
+read emailaddress
+git config --global user.name "$fullname"
+git config --global user.email "$emailaddress"
+
 # Install Virtualbox
 cd /tmp
 wget http://download.virtualbox.org/virtualbox/4.3.12/VirtualBox-4.3.12-93733-OSX.dmg
