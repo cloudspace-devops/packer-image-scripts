@@ -6,7 +6,7 @@ The repo contains Clousdpace's scripts & configs to build client VMs (vagrant, A
 ## Configuring a new computer
 
 1. Run the following script in terminal on your computer: 
-`bash <(curl -s https://raw.githubusercontent.com/cloudspace-devops/packer-image-scripts/master/sample-client-config/devops/dev-machine-setup.sh)`
+`bash <(curl -s https://raw.githubusercontent.com/cloudspace-devops/packer-image-scripts/master/osx-dev-machine-setup.sh)`
 2. When prompted, select "Install" to get the command line developer tools.  After the install completes, dismiss the dialogue and press [return] in terminal.
 3. Enter your system password when prompted to install Brew
 4. Enter your full name and password for git when prompted.
