@@ -24,19 +24,27 @@ git config --global user.email "$emailaddress"
 cd /tmp
 wget http://download.virtualbox.org/virtualbox/4.3.12/VirtualBox-4.3.12-93733-OSX.dmg
 hdiutil attach VirtualBox-*.dmg
-sudo installer -pkg /Volumes/VirtualBox/VirtualBox.pkg -target /Volumes/Macintosh\ HD
+sudo installer -pkg /Volumes/VirtualBox/VirtualBox.pkg -target /
 hdiutil detach /Volumes/VirtualBox
 
 # Install Vagrant
 wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.2.dmg
 hdiutil attach vagrant_*.dmg
-sudo installer -pkg /Volumes/Vagrant/Vagrant.pkg -target /Volumes/Macintosh\ HD
+sudo installer -pkg /Volumes/Vagrant/Vagrant.pkg -target /
 hdiutil detach /Volumes/Vagrant
 
 # Install Packer
 brew install packer
 
 # Setup local srv folder
-sudo mkdir -p /srv
-sudo chdown $USER /srv
+if [[ ! -f /srv ]]; then
+	sudo mkdir /srv
+fi
+sudo chdown -R $USER /srv
 cd /srv
+
+# Create id_rsa key if needed
+if [[ ! -f $HOME/.ssh/id_rsa ]]; then
+	ssh-keygen -t rsa -C "$emailaddress"
+	chmod 600 $HOME/.ssh/id_rsa
+fi

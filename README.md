@@ -10,4 +10,5 @@ The repo contains Clousdpace's scripts & configs to build client VMs (vagrant, A
 2. When prompted, select "Install" to get the command line developer tools.  After the install completes, dismiss the dialogue and press [return] in terminal.
 3. Enter your system password when prompted to install Brew
 4. Enter your full name and password for git when prompted.
-5. Enter your system password to create a /srv folder for development.
+5. If prompted, enter your system password to create a /srv folder for development.
+6. If prompted, press enter to use the defaults three times to generate your id_rsa key.
