@@ -40,7 +40,7 @@ brew install packer
 if [[ ! -f /srv ]]; then
 	sudo mkdir /srv
 fi
-sudo chdown -R $USER /srv
+sudo chown -R $USER /srv
 cd /srv
 
 # Create id_rsa key if needed
