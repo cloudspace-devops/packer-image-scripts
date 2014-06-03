@@ -35,3 +35,8 @@ hdiutil detach /Volumes/Vagrant
 
 # Install Packer
 brew install packer
+
+# Setup local srv folder
+sudo mkdir -p /srv
+sudo chdown $USER /srv
+cd /srv

@@ -3,5 +3,11 @@
 The repo contains Clousdpace's scripts & configs to build client VMs (vagrant, AMIs, VMWare, etc.) with Packer.io.  It also conains initial Capistrano deploy setups, a dev environment Vagrantfile, and scrips to configure a new OS X dev machine and setup individual projects.
 
 
-## Configuring a new computer.
-bash <(curl -s https://raw.githubusercontent.com/cloudspace-devops/packer-image-scripts/master/sample-client-config/devops/dev-machine-setup.sh)
+## Configuring a new computer
+
+1. Run the following script in terminal on your computer: 
+`bash <(curl -s https://raw.githubusercontent.com/cloudspace-devops/packer-image-scripts/master/sample-client-config/devops/dev-machine-setup.sh)`
+2. When prompted, select "Install" to get the command line developer tools.  After the install completes, dismiss the dialogue and press [return] in terminal.
+3. Enter your system password when prompted to install Brew
+4. Enter your full name and password for git when prompted.
+5. Enter your system password to create a /srv folder for development.

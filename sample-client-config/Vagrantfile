@@ -1,7 +1,7 @@
 $domain_name = "sitename.com"
 $vagrant_ip = "33.33.164.176"
 $box_name = "ubuntu-latest.box"
-$box_path = "ubuntu"
+$box_path = "http://devops.cloudspace.com/images/"
 $cpus = 2
 $memory = 2048
 
