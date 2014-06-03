@@ -7,7 +7,7 @@
   "builders": [{
     "type": "virtualbox-iso",
     "vm_name": "{{user `vm_name`}}",
-    "output_directory": "builds/{{user `directory_name`}}",
+    "output_directory": "../builds/{{user `directory_name`}}",
     "iso_url": "{{user `iso_url`}}",
     "iso_checksum": "01545fa976c8367b4f0d59169ac4866c",
     "iso_checksum_type": "md5",
@@ -48,15 +48,15 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/sudoers-nopasswd.sh",
-      "scripts/base.sh",
-      "scripts/install-virtualbox-guest-additions.sh",
-      "scripts/add-vagrant-key.sh"
+      "../packer-shell-scripts/sudoers-nopasswd.sh",
+      "../packer-shell-scripts/base.sh",
+      "../packer-shell-scripts/install-virtualbox-guest-additions.sh",
+      "../packer-shell-scripts/add-vagrant-key.sh"
     ],
     "pause_before": "4s"
   }],
   "post-processors": [{
-    "output": "builds/{{user `directory_name`}}/{{user `vm_name`}}.box",
+    "output": "../builds/{{user `directory_name`}}/{{user `vm_name`}}.box",
     "type": "vagrant",
     "keep_input_artifact": true
   }]

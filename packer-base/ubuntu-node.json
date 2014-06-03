@@ -1,14 +1,14 @@
 {
   "variables": {
-    "vm_name": "cleverdb",
-    "directory_name": "cleverdb",
-    "base_box": "ruby-mysql/ruby-mysql-latest.ovf"
+    "vm_name": "node-latest",
+    "directory_name": "node",
+    "base_box": "ubuntu/ubuntu-latest.ovf"
   },
   "builders": [{
     "type": "virtualbox-ovf",
     "vm_name": "{{user `vm_name`}}",
-    "source_path": "builds/{{user `base_box`}}",
-    "output_directory": "builds/{{user `directory_name`}}",
+    "source_path": "../builds/{{user `base_box`}}",
+    "output_directory": "../builds/{{user `directory_name`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "20m",
@@ -17,12 +17,14 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "scripts/go-lang.sh"
+      "../packer-shell-scripts/node.sh",
+      "../packer-shell-scripts/yeoman.sh",
+      "../packer-shell-scripts/memcached.sh"
     ],
     "pause_before": "4s"
   }],
   "post-processors": [{
-    "output": "builds/{{user `directory_name`}}/{{user `vm_name`}}.box",
+    "output": "../builds/{{user `directory_name`}}/{{user `vm_name`}}.box",
     "type": "vagrant",
     "keep_input_artifact": true
   }]

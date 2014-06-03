@@ -6,7 +6,7 @@ BASEOVF="ruby-mysql-latest"
 wget -P devops/tmp http://devops.cloudspace.com/images/$BASEOVF.ovf
 wget -P devops/tmp http://devops.cloudspace.com/images/$BASEOVF-disk1.vmdk
 
-packer build packer.json
+packer build client.json
 
 # Run vagrant up using the Vagrantfile
 cd ../
