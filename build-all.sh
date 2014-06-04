@@ -15,5 +15,7 @@ packer build ubuntu-postgresql.json
 cd ../
 
 # cd packer-projects
+# packer build cleverdb.json
+# packer build packer.json
 # packer build pillphone.json
 # cd ../

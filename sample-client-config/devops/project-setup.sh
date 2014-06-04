@@ -1,3 +1,5 @@
+#!/bin/bash -eux
+
 BOXPATH="./devops/builds"
 BOXNAME="sitename-web.box"
 BASEOVF="ruby-mysql-latest"

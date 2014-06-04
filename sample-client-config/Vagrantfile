@@ -1,7 +1,8 @@
 $domain_name = "sitename.com"
 $vagrant_ip = "33.33.164.176"
 $box_name = "ubuntu-latest.box"
-$box_path = "http://devops.cloudspace.com/images/"
+# $box_path = "http://devops.cloudspace.com/images/"
+$box_path = "file:///srv/packer-image-scripts/builds/ubuntu/"
 $cpus = 2
 $memory = 2048
 
@@ -12,7 +13,7 @@ Vagrant.configure(2) do |config|
   config.ssh.private_key_path = ['../sample-client-config/devops/vagrant.pem', File.join(ENV['HOME'], '.ssh', 'id_rsa')]
   config.ssh.forward_agent = true
   config.vm.network "private_network", ip: $vagrant_ip
-  config.vm.synced_folder "./", "/srv/#{org}", type: "nfs"
+  config.vm.synced_folder "./", "/srv/#{org}", :nfs => { :mount_options => ["dmode=777","fmode=777"] }
 
   config.vm.provider "virtualbox" do |v|
     v.customize ["modifyvm", :id, "--memory", $memory, "--name", $domain_name,"--cpus", $cpus]
