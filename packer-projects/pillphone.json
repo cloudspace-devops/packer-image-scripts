@@ -21,6 +21,9 @@
       "../packer-shell-scripts/sphinx.sh"
     ],
     "pause_before": "4s"
+  },{
+    "type": "shell",
+    "inline": ["sudo apt-get install -y xvfb libqtwebkit-dev"]
   }],
   "post-processors": [{
     "output": "../builds/{{user `directory_name`}}/{{user `vm_name`}}.box",

@@ -1,6 +1,13 @@
 # Cache objects
 packer_cache/
 
+# For built boxes
+*.box
+output-virtualbox-iso/*
+virtualbox-*
+builds/*
+trash*
+
 # Env variables
 env.json
 

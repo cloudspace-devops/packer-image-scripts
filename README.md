@@ -12,3 +12,10 @@ The repo contains Clousdpace's scripts & configs to build client VMs (vagrant, A
 4. Enter your full name and password for git when prompted.
 5. If prompted, enter your system password to create a /srv folder for development.
 6. If prompted, press enter to use the defaults three times to generate your id_rsa key.
+
+
+## Building Packer Images
+
+1. Run `./build-all.sh` to create all base images
+2. To run an individual script, run: `packer build build-name.json`
+3. To create a custom project box, copy the closest match into the packer-projects folder, update the base image source, add/create the appropriate shell script(s), and run the build.
