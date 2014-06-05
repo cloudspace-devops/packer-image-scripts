@@ -28,3 +28,77 @@ sed -i '56s/end/# end/' config/deploy.rb
 sed -i '3i set :stages, %w(staging production)' config/deploy.rb
 sed -i "4i set :default_stage, 'staging'" config/deploy.rb
 sed -i "5i set :ssh_options, keys: ['~/.ssh/id_rsa'], forward_agent: true, user: 'app'" config/deploy.rb
+
+# config/deploy/production.rb
+cat <<EOF sudo tee config/deploy/production.rb
+role :app, #{ENV['APP_HOST']}
+role :web, #{ENV['APP_HOST']}
+role :db, #{ENV['APP_HOST']}
+
+set :branch, 'master'
+set :rails_env, 'production'
+
+set :default_environment, 'RAILS_ENV' => 'production'
+
+set :application, "#{ENV['STAGING_URL']}"
+
+set :deploy_to, "/srv/www/#{ENV['STAGING_URL']}"
+
+namespace :deploy do
+  task :start do
+    on roles(:app) do
+      execute "cd /srv/www/#{ENV['STAGING_URL']}/current && "\
+      "sudo bundle exec unicorn -E production -c /etc/unicorn/#{ENV['STAGING_URL']}.rb -D"
+    end
+  end
+
+  task :stop do
+    on roles(:app) do
+      execute "sudo kill -QUIT $(cat /srv/www/#{ENV['STAGING_URL']}/unicorn.pid)"
+    end
+  end
+
+  task :restart do
+    on roles(:app) do
+      execute "sudo kill -USR2 $(cat /srv/www/#{ENV['STAGING_URL']}/unicorn.pid)"
+    end
+  end
+end
+EOF
+
+#oconfig/deploy/staging.rb
+cat <<EOF sudo tee config/deploy/staging.rb
+role :app, #{ENV['STAGING_APP_HOST']}
+role :web, #{ENV['STAGING_WEB_HOST']}
+role :db, #{ENV['STAGING_DB_HOST']}
+
+set :branch, 'master'
+set :rails_env, 'staging'
+
+set :default_environment, 'RAILS_ENV' => 'staging'
+
+set :application, "#{ENV['STAGING_URL']}"
+
+set :deploy_to, "/srv/www/#{ENV['STAGING_URL']}"
+
+namespace :deploy do
+  task :start do
+    on roles(:app) do
+      execute "cd /srv/www/#{ENV['STAGING_URL']}/current && "\
+      "sudo bundle exec unicorn -E staging -c /etc/unicorn/#{ENV['STAGING_URL']}.rb -D"
+    end
+  end
+
+  task :stop do
+    on roles(:app) do
+      execute "sudo kill -QUIT $(cat /srv/www/#{ENV['STAGING_URL']}/unicorn.pid)"
+    end
+  end
+
+  task :restart do
+    on roles(:app) do
+      execute "sudo kill -USR2 $(cat /srv/www/#{ENV['STAGING_URL']}/unicorn.pid)"
+    end
+  end
+end
+EOF
