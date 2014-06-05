@@ -17,7 +17,11 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "../packer-shell-scripts/go-lang.sh"
+      "../packer-shell-scripts/go-lang.sh",
+      "../packer-shell-scripts/docker.sh",
+      "../packer-shell-scripts/etcd.sh",
+      "../packer-shell-scripts/fleetctl.sh",
+      "../packer-shell-scripts/postfix.sh"
     ],
     "pause_before": "4s"
   }],

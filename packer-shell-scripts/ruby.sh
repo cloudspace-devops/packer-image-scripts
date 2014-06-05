@@ -18,10 +18,11 @@ echo -e 'export PATH="./bin:$HOME/.rbenv/bin:$PATH"\neval "$(rbenv init -)"' | t
 
 echo $PATH
 
-# Install ruby-build, gem rehash, rbenv update rbenv plugns
+# Install rbenv plugns
 git clone git://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
 git clone git://github.com/sstephenson/rbenv-gem-rehash.git ~/.rbenv/plugins/rbenv-gem-rehash
 git clone git://github.com/rkh/rbenv-update.git ~/.rbenv/plugins/rbenv-update
+git clone git://github.com/dcarley/rbenv-sudo.git ~/.rbenv/plugins/rbenv-sudo
 
 # Install and set default ruby version
 cd ~/.rbenv

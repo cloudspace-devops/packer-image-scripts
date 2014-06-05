@@ -2,23 +2,37 @@
   "variables": {
     "vm_name": "packer",
     "directory_name": "packer",
-    "base_box": "ubuntu/ubuntu-latest.ovf"
+    "base_box": "ubuntu/ubuntu-latest.ovf",
+    "aws_access_key": "AKIAJEYSPRZ62RG4U3PA",
+    "aws_secret_key": "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",
+    "aws_account_id": "884882099534",
+    "aws_region": "us-east-1",
+    "aws_source_ami": "ami-c8cf3ba0",
+    "aws_instance_type": "m1.small",
+    "aws_s3_bucket": "devops.cloudspace.com"
   },
   "builders": [{
-    "type": "virtualbox-ovf",
-    "vm_name": "{{user `vm_name`}}",
-    "source_path": "../builds/{{user `base_box`}}",
-    "output_directory": "../builds/{{user `directory_name`}}",
-    "ssh_username": "vagrant",
-    "ssh_password": "vagrant",
-    "ssh_wait_timeout": "20m",
-    "shutdown_command": "sudo shutdown -P now"
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "{{user `aws_region`}}",
+    "source_ami": "{{user `aws_source_ami`}}",
+    "instance_type": "{{user `aws_instance_type`}}",
+    "ssh_username": "ubuntu",
+    "ami_name": "{{user `vm_name`}}-{{timestamp}}",
+    "ami_groups": ["all"],
+    "security_group_id": "default",
+    "tags": {
+      "Name": "packer"
+    },
+    "user_data_file": "aws.txt"
   }],
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "../packer-shell-scripts/packer.sh",
-      "../packer-shell-scripts/ec2-api-tools.sh"
+      "../packer-shell-scripts/sudoers-nopasswd.sh",
+      "../packer-shell-scripts/base.sh",
+      "../packer-shell-scripts/packer.sh"
     ],
     "pause_before": "4s"
   }],

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eux
 
 # Install Module Assistant
 sudo apt-get install -y module-assistant

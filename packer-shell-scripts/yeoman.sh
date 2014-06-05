@@ -5,4 +5,4 @@ sudo ifdown eth0
 sudo ifup eth0
 
 # Install yeoman, grunt and bower
-npm install yo -g --no-insight
+#npm install yo -g --no-insight

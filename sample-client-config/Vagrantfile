@@ -1,8 +1,8 @@
-$domain_name = "sitename.com"
+$domain_name = "cleverdb.com"
 $vagrant_ip = "33.33.164.176"
-$box_name = "ubuntu-latest.box"
+$box_name = "cleverdb.box"
 # $box_path = "http://devops.cloudspace.com/images/"
-$box_path = "file:///srv/packer-image-scripts/builds/ubuntu/"
+$box_path = "file:///srv/packer-image-scripts/builds/cleverdb/"
 $cpus = 2
 $memory = 2048
 

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -eux
 
 # Install Java
 sudo apt-get install -y openjdk-7-jdk

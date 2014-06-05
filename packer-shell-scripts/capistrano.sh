@@ -1,3 +1,5 @@
+#!/bin/bash -eux
+
 # capistrano
 cap install
 

@@ -19,3 +19,44 @@ The repo contains Clousdpace's scripts & configs to build client VMs (vagrant, A
 1. Run `./build-all.sh` to create all base images
 2. To run an individual script, run: `packer build build-name.json`
 3. To create a custom project box, copy the closest match into the packer-projects folder, update the base image source, add/create the appropriate shell script(s), and run the build.
+
+# Launching AWS Boxes
+
+1. Login to the EC2 console with your Amazon IAM account: https://console.aws.amazon.com/console/home?region=us-east-1 (If you don't have an Amazon IAM user setup, request one from DevOps.)
+2. Click "EC2"
+3. Click "Launch Instance"
+4. community amis
+search for ami-c8cf3ba0 
+select instance size
+click Next: Configure Instance Details
+(advanced details if you want to add cloud-init)
+click Next: Add Storage
+(configgle your storage)
+click Next: Tag Instance
+(name your instance
+click Next: Configure Security Group)
+select existing or create a new security group
+click Review and Launch
+scroll down and click Launch
+Choose an existing keypair or make a new one.
+click Launch Instances
+scroll down and click View Instances
+
+# grab the public ip of your launched container and toss that in the .env file under whatever environment you want
+
+
+,{ 
+    "type": "virtualbox-ovf",
+    "vm_name": "{{user `vm_name`}}",
+    "source_path": "../builds/{{user `base_box`}}",
+    "output_directory": "../builds/{{user `directory_name`}}",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_wait_timeout": "20m",
+    "shutdown_command": "sudo shutdown -P now"
+  }
+
+
+
+  ,
+      "../packer-shell-scripts/ec2-api-tools.sh"

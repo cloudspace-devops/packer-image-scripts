@@ -1,0 +1,31 @@
+#cloud-config
+
+write_files:
+  - path: /etc/apt/sources.list
+    permissions: 0755
+    content: |
+      #############################################################
+      ################### OFFICIAL UBUNTU REPOS ###################
+      #############################################################
+
+      ###### Ubuntu Main Repos
+      deb http://us.archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse
+      deb-src http://us.archive.ubuntu.com/ubuntu/ trusty main restricted universe multiverse
+
+      ###### Ubuntu Update Repos
+      deb http://us.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse
+      deb http://us.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse
+      deb http://us.archive.ubuntu.com/ubuntu/ trusty-proposed main restricted universe multiverse
+      deb http://us.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse
+      deb-src http://us.archive.ubuntu.com/ubuntu/ trusty-security main restricted universe multiverse
+      deb-src http://us.archive.ubuntu.com/ubuntu/ trusty-updates main restricted universe multiverse
+      deb-src http://us.archive.ubuntu.com/ubuntu/ trusty-proposed main restricted universe multiverse
+      deb-src http://us.archive.ubuntu.com/ubuntu/ trusty-backports main restricted universe multiverse
+
+      ###### Ubuntu Partner Repo
+      deb http://archive.canonical.com/ubuntu trusty partner
+      deb-src http://archive.canonical.com/ubuntu trusty partner
+  - path: /home/ubuntu/.ssh/authorized_keys
+    permissions: 0755
+    content: |
+      ssh-rsa AAAAB3NzaC1yc2EAAAABIwAAAQEA4qFiXcviaW9XO+3v4+Hrkv8TbVqHi4ps16hXVkoZUIHSJAWNwIu79QOHLZVk6PZghOLgYNN2NH6sX9bfGMHfyNE3t8MjNXQeggJ/tWI9z5UByRIx5FbjqXt4SfiEb4+Q3FG1utXIkHG87rFnGMKb2zNLzvdjY5Djybt7h/9hWybE3te3T9dQoSfdYUrRCUw9fOIY2oco4mMbfHyiWF5Q83yjQ/FTDaEgNIbdLoJNhqUx83ojy+SGAmaJUhoDCqyACfd1ywg00GdDDnNR47+mhXnFx3qG1XQHYZNXRHJiSgtJM1/DTPtporC5wwNxeztRymW6eSf4tC4rv4CqHceVsQ== nowthatsamatt@nowthatsamatt.local
