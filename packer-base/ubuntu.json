@@ -1,18 +1,29 @@
 {
   "variables": {
-    "vm_name": "ubuntu-latest",
-    "directory_name": "ubuntu",
-    "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso"
+    "build_name": "ubuntu",
+    "iso_url": "http://releases.ubuntu.com/14.04/ubuntu-14.04-server-amd64.iso",
+    "username": "vagrant",
+    "password": "vagrant"
   },
+  "provisioners": [{
+    "type": "shell",
+    "scripts": [
+      "../packer-shell-scripts/sudoers-nopasswd.sh",
+      "../packer-shell-scripts/install-virtualbox-guest-additions.sh",
+      "../packer-shell-scripts/add-vagrant-key.sh"
+    ],
+    "pause_before": "4s"
+  }],
   "builders": [{
+    "name": "virtualbox",
     "type": "virtualbox-iso",
-    "vm_name": "{{user `vm_name`}}",
-    "output_directory": "../builds/{{user `directory_name`}}",
+    "vm_name": "{{user `build_name`}}",
+    "output_directory": "../builds/{{user `build_name`}}",
     "iso_url": "{{user `iso_url`}}",
     "iso_checksum": "01545fa976c8367b4f0d59169ac4866c",
     "iso_checksum_type": "md5",
-    "ssh_username": "vagrant",
-    "ssh_password": "vagrant",
+    "ssh_username": "{{user `username`}}",
+    "ssh_password": "{{user `password`}}",
     "guest_os_type": "Ubuntu_64",
     "guest_additions_path": "VBoxGuestAdditions_{{.Version}}.iso",
     "virtualbox_version_file": ".vbox_version",
@@ -37,7 +48,7 @@
       "/install/vmlinuz noapic ",
       "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
       "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
-      "hostname={{user `vm_name`}} ",
+      "hostname={{user `build_name`}} ",
       "fb=false debconf/frontend=noninteractive ",
       "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
       "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
@@ -45,18 +56,8 @@
     ],
     "shutdown_command": "sudo shutdown -P now"
   }],
-  "provisioners": [{
-    "type": "shell",
-    "scripts": [
-      "../packer-shell-scripts/sudoers-nopasswd.sh",
-      "../packer-shell-scripts/base.sh",
-      "../packer-shell-scripts/install-virtualbox-guest-additions.sh",
-      "../packer-shell-scripts/add-vagrant-key.sh"
-    ],
-    "pause_before": "4s"
-  }],
   "post-processors": [{
-    "output": "../builds/{{user `directory_name`}}/{{user `vm_name`}}.box",
+    "output": "../builds/{{user `build_name`}}/{{user `build_name`}}.box",
     "type": "vagrant",
     "keep_input_artifact": true
   }]

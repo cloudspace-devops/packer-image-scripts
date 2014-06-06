@@ -1,19 +1,18 @@
 {
   "variables": {
-    "vm_name": "node-latest",
-    "directory_name": "node",
-    "base_box": "ubuntu/ubuntu-latest.ovf"
+    "build_name": "node",
+    "base_box": "packer/packer.ovf",
+    "aws_source_ami": "ami-7c28d814",
+    "aws_access_key": "AKIAJEYSPRZ62RG4U3PA",
+    "aws_secret_key": "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",
+    "aws_account_id": "884882099534",
+    "aws_region": "us-east-1",
+    "aws_instance_type": "m3.large",
+    "aws_s3_bucket": "devops.cloudspace.com",
+    "aws_security_group": "default",
+    "username": "vagrant",
+    "password": "vagrant"
   },
-  "builders": [{
-    "type": "virtualbox-ovf",
-    "vm_name": "{{user `vm_name`}}",
-    "source_path": "../builds/{{user `base_box`}}",
-    "output_directory": "../builds/{{user `directory_name`}}",
-    "ssh_username": "vagrant",
-    "ssh_password": "vagrant",
-    "ssh_wait_timeout": "20m",
-    "shutdown_command": "sudo shutdown -P now"
-  }],
   "provisioners": [{
     "type": "shell",
     "scripts": [
@@ -22,6 +21,33 @@
       "../packer-shell-scripts/memcached.sh"
     ],
     "pause_before": "4s"
+  }],
+  "builders": [{
+    "name": "aws",
+    "type": "amazon-ebs",
+    "access_key": "{{user `aws_access_key`}}",
+    "secret_key": "{{user `aws_secret_key`}}",
+    "region": "{{user `aws_region`}}",
+    "source_ami": "{{user `aws_source_ami`}}",
+    "instance_type": "{{user `aws_instance_type`}}",
+    "ssh_username": "ubuntu",
+    "ami_name": "{{user `build_name`}}-{{timestamp}}",
+    "ami_groups": ["all"],
+    "security_group_id": "{{user `aws_security_group`}}",
+    "tags": {
+      "Name": "packer",
+      "Name": "{{user `build_name`}}"
+    },
+    "user_data": ""
+  },{ 
+    "type": "virtualbox-ovf",
+    "vm_name": "{{user `build_name`}}",
+    "source_path": "../builds/{{user `base_box`}}",
+    "output_directory": "../builds/{{user `build_name`}}",
+    "ssh_username": "{{user `username`}}",
+    "ssh_password": "{{user `password`}}",
+    "ssh_wait_timeout": "20m",
+    "shutdown_command": "sudo shutdown -P now"
   }],
   "post-processors": [{
     "output": "../builds/{{user `directory_name`}}/{{user `vm_name`}}.box",
