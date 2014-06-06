@@ -60,3 +60,17 @@ scroll down and click View Instances
 
   ,
       "../packer-shell-scripts/ec2-api-tools.sh"
+
+
+
+      
+
+
+            "../packer-shell-scripts/sudoers-nopasswd.sh",
+      "../packer-shell-scripts/base.sh",
+
+
+
+
+  postfix.sh fixed
+  yeoman.sh fixed

@@ -8,7 +8,7 @@
     "aws_account_id": "884882099534",
     "aws_region": "us-east-1",
     "aws_source_ami": "ami-c8cf3ba0",
-    "aws_instance_type": "m1.small",
+    "aws_instance_type": "m3.large",
     "aws_s3_bucket": "devops.cloudspace.com"
   },
   "builders": [{
@@ -25,14 +25,24 @@
     "tags": {
       "Name": "packer"
     },
-    "user_data_file": "aws.txt"
+    "user_data": ""
+  },{ 
+    "type": "virtualbox-ovf",
+    "vm_name": "{{user `vm_name`}}",
+    "source_path": "../builds/{{user `base_box`}}",
+    "output_directory": "../builds/{{user `directory_name`}}",
+    "ssh_username": "vagrant",
+    "ssh_password": "vagrant",
+    "ssh_wait_timeout": "20m",
+    "shutdown_command": "sudo shutdown -P now"
   }],
   "provisioners": [{
     "type": "shell",
     "scripts": [
       "../packer-shell-scripts/sudoers-nopasswd.sh",
       "../packer-shell-scripts/base.sh",
-      "../packer-shell-scripts/packer.sh"
+      "../packer-shell-scripts/packer.sh",
+      "../packer-shell-scripts/ec2-api-tools.sh"
     ],
     "pause_before": "4s"
   }],
