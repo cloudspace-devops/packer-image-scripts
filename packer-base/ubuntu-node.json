@@ -2,7 +2,7 @@
   "variables": {
     "build_name": "node",
     "base_box": "ubuntu/ubuntu.ovf",
-    "aws_source_ami": "ami-9ab547f2",
+    "aws_source_ami": "ami-22a2504a",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_account_id": "884882099534",

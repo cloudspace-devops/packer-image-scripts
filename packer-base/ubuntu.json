@@ -22,6 +22,11 @@
     ],
     "only": ["virtualbox"],
     "pause_before": "4s"
+  },
+  {
+    "type": "shell",
+    "script": "../packer-shell-scripts/base.sh",
+    "pause_before": "4s"
   }],
   "builders": [{
     "name": "aws",

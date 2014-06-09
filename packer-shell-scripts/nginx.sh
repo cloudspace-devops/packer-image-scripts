@@ -6,5 +6,5 @@ sudo useradd -s /sbin/nologin -r nginx
 
 sudo groupadd web
 sudo usermod -a -G web nginx
-sudo usermod -a -G web vagrant
+sudo usermod -a -G web $USER
 
