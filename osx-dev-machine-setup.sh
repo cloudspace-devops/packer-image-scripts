@@ -28,7 +28,7 @@ sudo installer -pkg /Volumes/VirtualBox/VirtualBox.pkg -target /
 hdiutil detach /Volumes/VirtualBox
 
 # Install Vagrant
-wget https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.2.dmg
+wget http://dl.bintray.com/mitchellh/vagrant/#vagrant_1.6.3.dmg
 hdiutil attach vagrant_*.dmg
 sudo installer -pkg /Volumes/Vagrant/Vagrant.pkg -target /
 hdiutil detach /Volumes/Vagrant
