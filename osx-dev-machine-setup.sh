@@ -8,9 +8,6 @@ ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 brew tap homebrew/binary
 brew update
 
-# Install wget
-brew install -y wget
-
 # Install git
 brew install git
 echo -n "Enter your full name for git and press [ENTER]: "
@@ -21,14 +18,14 @@ git config --global user.name "$fullname"
 git config --global user.email "$emailaddress"
 
 # Install Virtualbox
-cd /tmp
-wget http://download.virtualbox.org/virtualbox/4.3.12/VirtualBox-4.3.12-93733-OSX.dmg
+cd ~/Downloads/
+curl -L -O http://download.virtualbox.org/virtualbox/4.3.12/VirtualBox-4.3.12-93733-OSX.dmg
 hdiutil attach VirtualBox-*.dmg
 sudo installer -pkg /Volumes/VirtualBox/VirtualBox.pkg -target /
 hdiutil detach /Volumes/VirtualBox
 
 # Install Vagrant
-wget http://dl.bintray.com/mitchellh/vagrant/#vagrant_1.6.3.dmg
+curl -L -O https://dl.bintray.com/mitchellh/vagrant/vagrant_1.6.3.dmg
 hdiutil attach vagrant_*.dmg
 sudo installer -pkg /Volumes/Vagrant/Vagrant.pkg -target /
 hdiutil detach /Volumes/Vagrant
