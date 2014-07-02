@@ -1,0 +1,3 @@
+[submodule "packer-shell-scripts"]
+	path = packer-shell-scripts
+	url = git@github.com:cloudspace-devops/packer-shell-scripts.git
