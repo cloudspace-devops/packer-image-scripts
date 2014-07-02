@@ -5,8 +5,9 @@ The repo contains Clousdpace's scripts & configs to build client VMs (vagrant, A
 
 ## Configuring a new computer
 
-####  NOTE:  This is not for the first time using packer on your computer.  This is literally for a newly purchased computer that needs to be provisioned.  It will install/upgrade xcode, virtualbox, etc.
+####  NOTE:  This is not for the first time using packer on your computer.  This is literally for a newly purchased computer that needs to be provisioned.  It will install/upgrade Xcode command line tools, virtualbox, etc.
 
+0. Install XCode from the Mac App Store; and start Xcode so you can accept the terms & conditions before moving on
 1. Run the following script in terminal on your computer: 
 `bash <(curl -s https://raw.githubusercontent.com/cloudspace-devops/packer-image-scripts/master/osx-dev-machine-setup.sh)`
 2. When prompted, select "Install" to get the command line developer tools.  After the install completes, dismiss the dialogue and press [return] in terminal.
