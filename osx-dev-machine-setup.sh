@@ -37,7 +37,7 @@ brew install packer
 if [[ ! -f /srv ]]; then
 	sudo mkdir /srv
 fi
-sudo chown -R $USER /srv
+sudo chown -R `eval whoami` /srv
 cd /srv
 
 # Create id_rsa key if needed

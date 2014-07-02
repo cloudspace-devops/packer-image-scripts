@@ -6,5 +6,5 @@ sudo useradd -s /sbin/nologin -r nginx
 
 sudo groupadd web
 sudo usermod -a -G web nginx
-sudo usermod -a -G web $USER
+sudo usermod -a -G web `eval whoami`
 
