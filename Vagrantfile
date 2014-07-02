@@ -5,13 +5,13 @@ $box_name = "packer-virtualbox.box"
 $box_path = "file:///srv/packer-image-scripts/builds/packer/"
 $cpus = 2
 $memory = 2048
-$buildbox = "/srv/microservice"
+$buildbox = "../microservice"
 
 Vagrant.configure(2) do |config|
   org = $domain_name
   config.vm.box = $box_name
   config.vm.box_url = File.join($box_path, $box_name)
-  config.ssh.private_key_path = ['sample-client-config/devops/vagrant.pem', File.join(ENV['HOME'], '.ssh', 'id_rsa')]
+  config.ssh.private_key_path = ['./sample-client-config/devops/vagrant.pem', File.join(ENV['HOME'], '.ssh', 'id_rsa')]
   config.ssh.forward_agent = true
   config.vm.network "private_network", ip: $vagrant_ip
   config.vm.synced_folder $buildbox, "/srv/#{org}", :nfs => { :mount_options => ["dmode=777","fmode=777"] }

@@ -16,7 +16,6 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "../packer-shell-scripts/base.sh",
       "../packer-shell-scripts/packer.sh",
       "../packer-shell-scripts/docker.sh"
     ],
