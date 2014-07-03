@@ -7,7 +7,6 @@ output-virtualbox-iso/*
 virtualbox-*
 builds/*
 trash*
-sample-client-config/.vagrant/
 .vagrant/*
 
 # Env variables
