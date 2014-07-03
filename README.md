@@ -1,21 +1,6 @@
 # Cloudspace DevOps -- Packer
 
-The repo contains Clousdpace's scripts & configs to build client VMs (vagrant, AMIs, VMWare, etc.) with Packer.io.  It also conains initial Capistrano deploy setups, a dev environment Vagrantfile, and scrips to configure a new OS X dev machine and setup individual projects.
-
-
-## Configuring a new computer
-
-####  NOTE:  This is not for the first time using packer on your computer.  This is literally for a newly purchased computer that needs to be provisioned.  It will install/upgrade Xcode command line tools, virtualbox, etc.
-
-0. Install XCode from the Mac App Store; and start Xcode so you can accept the terms & conditions before moving on
-1. Run the following script in terminal on your computer:
-`bash <(curl -s https://raw.githubusercontent.com/cloudspace-devops/packer-image-scripts/master/osx-dev-machine-setup.sh)`
-2. When prompted, select "Install" to get the command line developer tools.  After the install completes, dismiss the dialogue and press [return] in terminal.
-3. Enter your system password when prompted to install Brew
-4. Enter your full name and password for git when prompted.
-5. If prompted, enter your system password to create a /srv folder for development.
-6. If prompted, press enter to use the defaults three times to generate your id_rsa key.
-
+The repo contains Clousdpace's scripts & configs to build client VMs (vagrant, AMIs, VMWare, etc.) with Packer.io.  It also conains initial Capistrano deploy setups and a dev environment Vagrantfile.
 
 ## Building Packer Images
 
@@ -39,6 +24,7 @@ The repo contains Clousdpace's scripts & configs to build client VMs (vagrant, A
     ```
 
 4. To create a custom project box, copy the closest match into the packer-projects folder, update the base image source, add/create the appropriate shell script(s), and run the build.
+
 
 # Launching AWS Boxes
 
