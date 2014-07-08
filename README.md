@@ -2,6 +2,18 @@
 
 The repo contains Clousdpace's scripts & configs to build client VMs (vagrant, AMIs, VMWare, etc.) with Packer.io.
 
+## Default Builds
+
+For most projects you can use a default build and then customize as needed.  Here are links to download default Vagrant (.box files), Virtualbox (.ovf & .vmdk), and aws (ami listed in .txt file)
+
+- Ubuntu: http://devops.cloudspace.com/images/?prefix=images/ubuntu/
+- Ubuntu + MySQL: http://devops.cloudspace.com/images/?prefix=images/mysql/
+- Ubuntu + NodeJS: http://devops.cloudspace.com/images/?prefix=images/node/
+- Ubuntu + PostgreSQL: http://devops.cloudspace.com/images/?prefix=images/postgresql/
+- Ubuntu + Ruby: http://devops.cloudspace.com/images/?prefix=images/ruby/
+- Ubuntu + Ruby + MySQL: http://devops.cloudspace.com/images/?prefix=images/ruby-mysql/
+- Ubuntu + Ruby + PostgreSQL: http://devops.cloudspace.com/images/?prefix=images/ruby-postgresql/
+
 ## Building Packer Images
 
 1. Set your AWS key/secret as an environment variable
