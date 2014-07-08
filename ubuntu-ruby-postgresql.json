@@ -1,6 +1,6 @@
 {
   "variables": {
-    "build_name": "ruby-postpresql",
+    "build_name": "ruby-postgresql",
     "base_box": "ruby/ruby.ovf",
     "aws_source_ami": "ami-889260e0",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",

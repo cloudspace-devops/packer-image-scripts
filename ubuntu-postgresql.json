@@ -1,6 +1,6 @@
 {
   "variables": {
-    "build_name": "postpresql",
+    "build_name": "postgresql",
     "base_box": "ubuntu/ubuntu.ovf",
     "aws_source_ami": "ami-889260e0",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
