@@ -42,20 +42,20 @@
     "name": "virtualbox",
     "type": "virtualbox-ovf",
     "vm_name": "{{user `build_name`}}",
-    "source_path": "../builds/{{user `base_box`}}",
-    "output_directory": "../builds/{{user `build_name`}}",
+    "source_path": "./builds/{{user `base_box`}}",
+    "output_directory": "./builds/{{user `build_name`}}",
     "ssh_username": "{{user `username`}}",
     "ssh_password": "{{user `password`}}",
     "ssh_wait_timeout": "20m",
     "shutdown_command": "sudo shutdown -P now"
   }],
   "post-processors": [{
-    "output": "../builds/{{user `build_name`}}/{{user `build_name`}}-virtualbox.box",
+    "output": "./builds/{{user `build_name`}}/{{user `build_name`}}-virtualbox.box",
     "type": "vagrant",
     "keep_input_artifact": true,
     "only": ["virtualbox"]
   },{
-    "output": "../builds/{{user `build_name`}}/{{user `build_name`}}-aws.box",
+    "output": "./builds/{{user `build_name`}}/{{user `build_name`}}-aws.box",
     "type": "vagrant",
     "keep_input_artifact": true,
     "only": ["aws"]

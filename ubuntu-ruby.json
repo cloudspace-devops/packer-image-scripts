@@ -45,15 +45,15 @@
     "name": "virtualbox",
     "type": "virtualbox-ovf",
     "vm_name": "{{user `build_name`}}",
-    "source_path": "../builds/{{user `base_box`}}",
-    "output_directory": "../builds/{{user `build_name`}}",
+    "source_path": "./builds/{{user `base_box`}}",
+    "output_directory": "./builds/{{user `build_name`}}",
     "ssh_username": "vagrant",
     "ssh_password": "vagrant",
     "ssh_wait_timeout": "20m",
     "shutdown_command": "sudo shutdown -P now"
   }],
   "post-processors": [{
-    "output": "../builds/{{user `build_name`}}/{{user `build_name`}}.box",
+    "output": "./builds/{{user `build_name`}}/{{user `build_name`}}.box",
     "type": "vagrant",
     "keep_input_artifact": true,
     "only": ["virtualbox"]
