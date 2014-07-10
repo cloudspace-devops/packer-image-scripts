@@ -1,6 +1,6 @@
 {
   "variables": {
-    "build_name": "packer",
+    "build_name": "devops",
     "base_box": "ubuntu/ubuntu.ovf",
     "aws_source_ami": "ami-22a2504a",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
@@ -17,7 +17,8 @@
     "type": "shell",
     "scripts": [
       "../packer-shell-scripts/packer.sh",
-      "../packer-shell-scripts/docker.sh"
+      "../packer-shell-scripts/docker.sh",
+      "../packer-shell-scripts/go-lang.sh"
     ],
     "pause_before": "4s"
   }],
