@@ -16,16 +16,16 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "../packer-shell-scripts/sudoers-nopasswd.sh",
-      "../packer-shell-scripts/install-virtualbox-guest-additions.sh",
-      "../packer-shell-scripts/add-vagrant-key.sh"
+      "packer-shell-scripts/sudoers-nopasswd.sh",
+      "packer-shell-scripts/install-virtualbox-guest-additions.sh",
+      "packer-shell-scripts/add-vagrant-key.sh"
     ],
     "only": ["virtualbox"],
     "pause_before": "4s"
   },
   {
     "type": "shell",
-    "script": "../packer-shell-scripts/base.sh",
+    "script": "packer-shell-scripts/base.sh",
     "pause_before": "4s"
   }],
   "builders": [{

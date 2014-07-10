@@ -16,7 +16,7 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "../packer-shell-scripts/postgresql-server.sh"
+      "packer-shell-scripts/postgresql-server.sh"
     ],
     "pause_before": "4s"
   }],

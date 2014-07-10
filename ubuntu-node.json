@@ -16,9 +16,9 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "../packer-shell-scripts/node.sh",
-      "../packer-shell-scripts/yeoman.sh",
-      "../packer-shell-scripts/memcached.sh"
+      "packer-shell-scripts/node.sh",
+      "packer-shell-scripts/yeoman.sh",
+      "packer-shell-scripts/memcached.sh"
     ],
     "pause_before": "4s"
   }],
@@ -39,7 +39,7 @@
       "Name": "{{user `build_name`}}"
     },
     "user_data": ""
-  },{ 
+  },{
     "name": "virtualbox",
     "type": "virtualbox-ovf",
     "vm_name": "{{user `build_name`}}",

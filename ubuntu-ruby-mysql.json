@@ -16,7 +16,7 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "../packer-shell-scripts/mysql-server.sh"
+      "packer-shell-scripts/mysql-server.sh"
     ],
     "pause_before": "4s"
   }],

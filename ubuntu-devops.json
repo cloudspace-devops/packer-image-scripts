@@ -16,9 +16,9 @@
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "../packer-shell-scripts/packer.sh",
-      "../packer-shell-scripts/docker.sh",
-      "../packer-shell-scripts/go-lang.sh"
+      "packer-shell-scripts/packer.sh",
+      "packer-shell-scripts/docker.sh",
+      "packer-shell-scripts/go-lang.sh"
     ],
     "pause_before": "4s"
   }],

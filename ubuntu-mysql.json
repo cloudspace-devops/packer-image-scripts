@@ -11,12 +11,12 @@
     "aws_s3_bucket": "devops.cloudspace.com",
     "aws_security_group": "default",
     "username": "vagrant",
-    "password": "vagrant"    
+    "password": "vagrant"
   },
   "provisioners": [{
     "type": "shell",
     "scripts": [
-      "../packer-shell-scripts/mysql-server.sh"
+      "packer-shell-scripts/mysql-server.sh"
     ],
     "pause_before": "4s"
   }],
