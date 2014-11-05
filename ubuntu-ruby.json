@@ -20,6 +20,7 @@
       "packer-shell-scripts/ruby.sh",
       "packer-shell-scripts/imagemagick.sh",
       "packer-shell-scripts/memcached.sh",
+      "packer-shell-scripts/redis.sh",
       "packer-shell-scripts/nginx.sh"
     ],
     "pause_before": "4s"
