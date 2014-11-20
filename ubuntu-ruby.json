@@ -2,7 +2,7 @@
   "variables": {
     "build_name": "ruby",
     "base_box": "ubuntu/ubuntu.ovf",
-    "aws_source_ami": "ami-22a2504a",
+    "aws_source_ami": "ami-66008e0e",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_account_id": "884882099534",
@@ -19,8 +19,6 @@
       "packer-shell-scripts/node.sh",
       "packer-shell-scripts/ruby.sh",
       "packer-shell-scripts/imagemagick.sh",
-      "packer-shell-scripts/memcached.sh",
-      "packer-shell-scripts/redis.sh",
       "packer-shell-scripts/nginx.sh"
     ],
     "pause_before": "4s"

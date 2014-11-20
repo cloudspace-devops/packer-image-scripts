@@ -2,7 +2,7 @@
   "variables": {
     "build_name": "ruby-postgresql",
     "base_box": "ruby/ruby.ovf",
-    "aws_source_ami": "ami-889260e0",
+    "aws_source_ami": "ami-ae1c92c6",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_account_id": "884882099534",

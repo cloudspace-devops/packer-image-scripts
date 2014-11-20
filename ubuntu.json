@@ -25,7 +25,11 @@
   },
   {
     "type": "shell",
-    "script": "packer-shell-scripts/base.sh",
+    "scripts": [
+      "packer-shell-scripts/base.sh",
+      "packer-shell-scripts/redis.sh",
+      "packer-shell-scripts/memcached.sh"
+    ],
     "pause_before": "4s"
   }],
   "builders": [{
