@@ -7,7 +7,7 @@
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_account_id": "884882099534",
     "aws_region": "us-east-1",
-    "aws_instance_type": "c3.large",
+    "aws_instance_type": "g2.2xlarge",
     "aws_s3_bucket": "devops.cloudspace.com",
     "aws_security_group": "default",
     "username": "vagrant",
