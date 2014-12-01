@@ -2,7 +2,7 @@
   "variables": {
     "build_name": "mysql",
     "base_box": "ubuntu/ubuntu.ovf",
-    "aws_source_ami": "ami-889260e0",
+    "aws_source_ami": "ami-66008e0e",
     "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
     "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
     "aws_account_id": "884882099534",
