@@ -1,0 +1,62 @@
+{
+  "variables": {
+    "build_name": "thegeec",
+    "base_box": "ubuntu/ubuntu.ovf",
+    "aws_source_ami": "ami-66008e0e",
+    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
+    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY`}}",
+    "aws_account_id": "884882099534",
+    "aws_region": "us-east-1",
+    "aws_instance_type": "c3.large",
+    "aws_s3_bucket": "devops.cloudspace.com",
+    "aws_security_group": "default",
+    "username": "vagrant",
+    "password": "vagrant"
+  },
+  "provisioners": [{
+    "type": "shell",
+    "inline": ["sudo apt-get install -y xvfb libqtwebkit-dev libevent-pthreads-2.0-5 libstdc++6"],
+    "pause_before": "4s"
+  },{
+    "type": "shell",
+    "scripts": [
+      "packer-shell-scripts/upgrade.sh",
+      "packer-shell-scripts/docker.sh"
+    ],
+    "pause_before": "4s"
+  }],
+    "builders": [{
+      "name": "aws",
+      "type": "amazon-ebs",
+      "access_key": "{{user `aws_access_key`}}",
+      "secret_key": "{{user `aws_secret_key`}}",
+      "region": "{{user `aws_region`}}",
+      "source_ami": "{{user `aws_source_ami`}}",
+      "instance_type": "{{user `aws_instance_type`}}",
+      "ssh_username": "ubuntu",
+      "ami_name": "{{user `build_name`}}-{{timestamp}}",
+      "ami_groups": ["all"],
+      "security_group_id": "{{user `aws_security_group`}}",
+      "tags": {
+        "Name": "packer",
+        "Name": "{{user `build_name`}}"
+      },
+      "user_data": ""
+      },{
+        "name": "virtualbox",
+        "type": "virtualbox-ovf",
+        "vm_name": "{{user `build_name`}}",
+        "source_path": "./builds/{{user `base_box`}}",
+        "output_directory": "./builds/{{user `build_name`}}",
+        "ssh_username": "vagrant",
+        "ssh_password": "vagrant",
+        "ssh_wait_timeout": "20m",
+        "shutdown_command": "sudo shutdown -P now"
+        }],
+        "post-processors": [{
+          "output": "./builds/{{user `build_name`}}/{{user `build_name`}}.box",
+          "type": "vagrant",
+          "keep_input_artifact": true,
+          "only": ["virtualbox"]
+          }]
+        }
