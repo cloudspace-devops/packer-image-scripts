@@ -55,7 +55,7 @@
     "vm_name": "{{user `build_name`}}",
     "output_directory": "./builds/{{user `build_name`}}",
     "iso_url": "{{user `iso_url`}}",
-    "iso_checksum": "01545fa976c8367b4f0d59169ac4866c",
+    "iso_checksum": "83aabd8dcf1e8f469f3c72fff2375195",
     "iso_checksum_type": "md5",
     "ssh_username": "{{user `username`}}",
     "ssh_password": "{{user `password`}}",
